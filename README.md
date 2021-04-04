@@ -271,4 +271,8 @@ category.rb
 
 	Lo ponemos en la vista del index home para que muestre nuestra gráfica 
 	<%= pie_chart @bookmarks %>
+
+	para el diagrama de relaciones usamos una gema llamada ERD que nos ayuda a ilustrar nuestro modelo:
+
+	Necesitabamos 3 modelos(category, kind, bookmark) pero a su vez algo que los relacionara entre sí, ahi surge 2 modelos mas (bookmarkCategory y bookmarkKind) que hacen el papel de unir nuestras tablas, como nuestro modelo category tambien puede tener subcategorias creamos una relacion que pertenezca a si mismo con la finalidad de generar sus categorias hijos. En el caso de bookmark puede acceder ambos modelos(category y kind) y los conecta entre si a traves de las tablas bookmarkCategory y bookmarkKind
 * 

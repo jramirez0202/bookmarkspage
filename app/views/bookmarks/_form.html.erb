@@ -26,7 +26,6 @@
     <ul class= "field-space">
       <%= form.collection_check_boxes :category_ids, Category.all, :id, :title %>
     </ul>
-   
   </div>
 
   <div class="field">
@@ -37,7 +36,9 @@
   
   </div>
 
+
   <div class="actions">
+  
     <%= form.submit data: { confirm: 'add mark?' } %>
   </div>
 <% end %>
