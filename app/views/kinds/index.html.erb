@@ -2,7 +2,7 @@
 
 <h1>Kinds</h1>
 
-<table>
+<table id='kinds'>
   <thead>
     <tr>
       <th>Title</th>
@@ -11,17 +11,14 @@
   </thead>
 
   <tbody>
-    <% @kinds.each do |kind| %>
-      <tr>
-        <td><%= kind.title %></td>
-        <td><%= link_to 'Show', kind %></td>
-        <td><%= link_to 'Edit', edit_kind_path(kind) %></td>
-        <td><%= link_to 'Destroy', kind, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+
+  <%= render @kinds%>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Kind', new_kind_path %>
+<div id='new-kind'>
+  <%= link_to 'New Kind', new_kind_path, remote: true %>
+</div>
+

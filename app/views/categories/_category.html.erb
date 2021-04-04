@@ -1,0 +1,8 @@
+      <tr>
+        <td><%= category.title %></td>
+        <td><%= category.is_public %></td>
+        <td><%= category.parent_category %></td>
+        <td><%= link_to 'Show', category %></td>
+        <td><%= link_to 'Edit', edit_category_path(category) %></td>
+        <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?', remote: true}, class:"delete"  %></td>
+      </tr>

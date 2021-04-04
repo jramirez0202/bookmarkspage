@@ -1,0 +1,6 @@
+<tr>
+        <td><%= kind.title %></td>
+        <td><%= link_to 'Show', kind %></td>
+        <td><%= link_to 'Edit', edit_kind_path(kind) %></td>
+        <td><%= link_to 'Destroy', kind, method: :delete, data: { confirm: 'Are you sure?', remote: true}, class:"delete" %></td>
+</tr>

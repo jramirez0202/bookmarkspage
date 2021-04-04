@@ -25,6 +25,7 @@ class KindsController < ApplicationController
 
     respond_to do |format|
       if @kind.save
+        format.js
         format.html { redirect_to @kind, notice: "Kind was successfully created." }
         format.json { render :show, status: :created, location: @kind }
       else
@@ -51,6 +52,7 @@ class KindsController < ApplicationController
   def destroy
     @kind.destroy
     respond_to do |format|
+      format.js
       format.html { redirect_to kinds_url, notice: "Kind was successfully destroyed." }
       format.json { head :no_content }
     end

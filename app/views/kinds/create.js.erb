@@ -1,0 +1,3 @@
+$('#new-kind form').remove();
+$('#new-kind a').show();
+$('table#kinds tbody').append('<%= j render @kind, locals: { kind: @kind} %>')

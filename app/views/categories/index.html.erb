@@ -2,7 +2,7 @@
 
 <h1>Categories</h1>
 
-<table>
+<table id='categories'>
   <thead>
     <tr>
       <th>Title</th>
@@ -13,19 +13,12 @@
   </thead>
 
   <tbody>
-    <% @categories.each do |category| %>
-      <tr>
-        <td><%= category.title %></td>
-        <td><%= category.is_public %></td>
-        <td><%= category.parent_category %></td>
-        <td><%= link_to 'Show', category %></td>
-        <td><%= link_to 'Edit', edit_category_path(category) %></td>
-        <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+  <%= render @categories%>
   </tbody>
 </table>
 
 <br>
+<div id='new-category'> 
+  <%= link_to 'New Category', new_category_path, remote: true %>
+</div>
 
-<%= link_to 'New Category', new_category_path %>
