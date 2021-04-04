@@ -213,4 +213,62 @@ class Kind < ApplicationRecord
   end
 end
 
-* ...
+En la etiquedta html <tbody> del index de booksmark agregamos una clase ya que queremos que despues de crear el formulario lo guarde y nos retorne una respuesta js y ese js nos agregue un tr con el nuevo bookmark
+
+agregamos <tbody id="bookmarks-list">
+luego agregamos format.js{} al metodo create del bookmarks_controller
+ahora creamos la vista create.js.erb (usamos la que estaba create.html.erb y cambiamos por create.js.erb) usamos dos selector jquery para que vacie la lista otro que muestre el nuevo marcador y agregamos la vista parcial de bookmark en nuestro id
+creamos nuestra vista parcial bookmark copiando 
+
+$("#bookmarks-list").empty();
+$("#bookmarks-list").append("<%= j (render partial: 'bookmark', locals: {b: @bookmark}) %>");
+
+El formulario debe confirmar la creacion de marcadores 
+
+En este punto vamos al boton submit del index de bookmark lo solucionamos con un data: { confirm: 'add mark?' }
+
+Crear un endpoint que retorne un JSON con los datos de una categoría (debe incluir
+subcategorías y marcadores). El esquema del JSON de salida debe quedar a su
+criterio.
+
+para crear el endpoint vamos a nuestro controlador de category y creamos el metodo api con su id y un hash que traiga la informacion solicitaday al final render a ese hash pero antes vamos al routes.rb y creamos su ruta con su link_to en la vista show de category
+
+
+routes.rb
+get "categories/:id/api", to: "categories#api", as: "api"
+
+show.html.erb
+
+<%= link_to 'API', api_path(@category) %>
+
+category.rb
+  def api
+    category = Category.find(params[:id])
+    hash = {
+      title: category.title,
+      is_public: category.is_public,
+      parent_category: category.parent_category,
+      children_categories: category.children_categories,
+      bookmarks: category.bookmarks.pluck(:title)
+    }
+    render json: hash
+  end
+
+  agregando la gema charkick a nuestro gemfile 
+
+  gem 'chartkick' en el gemfile hcaer bundle en la consola
+
+	en application.js
+
+  	//= require chartkick
+	//= require highcharts
+
+	en la consola agregar yarn add highcharts
+
+	siguiendo la documentacion colocamos en el index del home controler
+
+	@bookmarks = Bookmark.joins(:categories).group("categories.title").count
+
+	Lo ponemos en la vista del index home para que muestre nuestra gráfica 
+	<%= pie_chart @bookmarks %>
+* 

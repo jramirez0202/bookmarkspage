@@ -1,2 +1,2 @@
-$("input").empty();
-$("#bookmarks-list").append("<%= escape_javascript(render partial: 'bookmark', locals: {b: @bookmark}) %>");
+$("#bookmarks-list").empty();
+$("#bookmarks-list").append("<%= j (render partial: 'bookmark', locals: {b: @bookmark}) %>");
